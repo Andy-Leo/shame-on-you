@@ -6,14 +6,16 @@ import { useTexture, Html, OrbitControls, useGLTF } from "@react-three/drei";
 import "./App.css";
 
 function Jp() {
-  const url = "jp.glb";
+  const url = "/jp.glb";
   const { scene } = useGLTF(url);
   return (
-    <primitive
-      object={scene}
-      position={[0, 2.26, 0]}
-      rotation={[0, 0, (10 * Math.PI) / 180]}
-    />
+    <Suspense fallback={null}>
+      <primitive
+        object={scene}
+        position={[0, 2.26, 0]}
+        rotation={[0, 0, (10 * Math.PI) / 180]}
+      />
+    </Suspense>
   );
 }
 
