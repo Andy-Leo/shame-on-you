@@ -28,24 +28,29 @@ function SkyBox() {
 }
 // "Environmentally & friendly" nuclear sewage
 const Earth = () => {
+  const map = useTexture("earth_atmos_2048_hfs.jpg");
+  const specularMap = useTexture("earth_specular_2048.jpg");
+  const normalMap = useTexture("earth_normal_2048.jpg");
   return (
-    <mesh
-      visible
-      position={[0, 0, 0]}
-      rotation={[(-54 * Math.PI) / 180, (128 * Math.PI) / 180, 0]}
-      castShadow
-    >
-      <directionalLight intensity={0.5} />
-      <sphereGeometry attach="geometry" args={[2, 32, 32]} />
-      <meshBasicMaterial
-        specular={0x333333}
-        shininess={5}
-        map={useTexture("earth_atmos_2048_hfs.jpg")}
-        specularMap={useTexture("earth_specular_2048.jpg")}
-        normalMap={useTexture("earth_normal_2048.jpg")}
-        normalScale={new THREE.Vector2(0.85, 0.85)}
-      />
-    </mesh>
+    <Suspense fallback={null}>
+      <mesh
+        visible
+        position={[0, 0, 0]}
+        rotation={[(-54 * Math.PI) / 180, (128 * Math.PI) / 180, 0]}
+        castShadow
+      >
+        <directionalLight intensity={0.5} />
+        <sphereGeometry attach="geometry" args={[2, 32, 32]} />
+        <meshBasicMaterial
+          specular={0x333333}
+          shininess={5}
+          map={map}
+          specularMap={specularMap}
+          normalMap={normalMap}
+          normalScale={new THREE.Vector2(0.85, 0.85)}
+        />
+      </mesh>
+    </Suspense>
   );
 };
 
