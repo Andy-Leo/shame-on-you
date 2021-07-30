@@ -65,7 +65,7 @@ function App() {
         <directionalLight position={[-10, -10, -5]} intensity={1} />
         <directionalLight position={[0, 0, 5]} intensity={1} />
         <directionalLight position={[10, 0, -5]} intensity={1} />
-        <Suspense fallback={<Html>Loading..</Html>}>
+        <Suspense fallback={null}>
           <group rotation={[(45 * Math.PI) / 180, 0, 0]}>
             <Jp />
             <Earth />
